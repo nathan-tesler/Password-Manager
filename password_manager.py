@@ -127,7 +127,7 @@ def generate_password():
 def update_password(website, username, new_password):
     #Update an existing password in the database
     encrypted_password = cipher.encrypt(new_password.encode())
-    con = sqlite3.connect("password.db")
+    con = sqlite3.connect("passwords.db")
     cursor = con.cursor()
     cursor.execute("""UPDATE passwords SET password = ? WHERE website = ? AND username = ?""",
                    (encrypted_password, website, username))
